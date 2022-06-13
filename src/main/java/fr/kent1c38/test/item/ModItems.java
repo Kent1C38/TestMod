@@ -14,6 +14,7 @@ public class ModItems
             DeferredRegister.create(ForgeRegistries.ITEMS, Test.MOD_ID);
 
     public static final RegistryObject<Item> RED_IRON = ITEMS.register("red_iron", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    //public static final RegistryObject<Item> CONTROLLER = ITEMS.register("controller", ()-> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static void register(IEventBus eventBus)
     {

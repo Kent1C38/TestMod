@@ -1,5 +1,6 @@
 package fr.kent1c38.test;
 
+import fr.kent1c38.test.block.ModBlocks;
 import fr.kent1c38.test.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +24,7 @@ public class Test
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
 
