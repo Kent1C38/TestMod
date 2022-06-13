@@ -17,16 +17,15 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-@Mod("test")
+@Mod(Test.MOD_ID)
 public class Test
 {
     private static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "test";
 
     public Test()
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -35,30 +34,5 @@ public class Test
     {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
-
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        InterModComms.sendTo("exemplemod", "helloworld", () -> {LOGGER.info("Hello world from the MDK"); return "Hello world";});
-    }
-    private void processIMC(final InterModProcessEvent event)
-    {
-        LOGGER.info("Got IMC {}", event.getIMCStream().map(m->m.messageSupplier().get()).collect(Collectors.toList()));
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-        LOGGER.info("HELLO from the server starting");
-    }
-
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents
-    {
-        @SubscribeEvent
-        public static void onBlockRegistry(final RegistryEvent.Register<Block> blockRegistryEvent)
-        {
-            LOGGER.info("HELLO from register Block");
-        }
     }
 }
