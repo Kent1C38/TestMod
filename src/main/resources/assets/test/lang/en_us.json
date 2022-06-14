@@ -2,6 +2,7 @@
   "itemGroup.test_tab" : "Test Tab",
 
   "item.test.raw_red_iron": "Raw Red Iron",
+  "item.test.red_iron_ingot": "Red Iron Ingot",
 
   "block.test.red_iron_block": "Red Iron Block",
   "block.test.red_iron_ore": "Red Iron Ore"
