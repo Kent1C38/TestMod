@@ -3,7 +3,10 @@
 
   "item.test.raw_red_iron": "Raw Red Iron",
   "item.test.red_iron_ingot": "Red Iron Ingot",
+  "item.test.dowsing_rod" : "Dowsing Rod",
 
   "block.test.red_iron_block": "Red Iron Block",
-  "block.test.red_iron_ore": "Red Iron Ore"
+  "block.test.red_iron_ore": "Red Iron Ore",
+
+  "item.test.dowsing_rod.no_valuable" : "No Valuables Founds!"
 }
