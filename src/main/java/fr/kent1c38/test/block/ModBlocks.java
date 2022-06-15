@@ -1,6 +1,7 @@
 package fr.kent1c38.test.block;
 
 import fr.kent1c38.test.Test;
+import fr.kent1c38.test.block.custom.SpeedyBlock;
 import fr.kent1c38.test.item.ModCreativeModTab;
 import fr.kent1c38.test.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -24,6 +25,8 @@ public class ModBlocks
     //Liste blocks
 
     public static final RegistryObject<Block> RED_IRON_BLOCK = registerBlock("red_iron_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(5f).requiresCorrectToolForDrops()), ModCreativeModTab.TEST_TAB);
+    public static final RegistryObject<Block> SPEEDY_BLOCK = registerBlock("speedy_block", () -> new SpeedyBlock(BlockBehaviour.Properties.of(Material.STONE).strength(5f).requiresCorrectToolForDrops()), ModCreativeModTab.TEST_TAB);
+    //Minerais
     public static final RegistryObject<Block> RED_IRON_ORE = registerBlock("red_iron_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(4f).requiresCorrectToolForDrops()), ModCreativeModTab.TEST_TAB);
 
     //Methodes (pas touche sans autorisation)

@@ -7,6 +7,7 @@
 
   "block.test.red_iron_block": "Red Iron Block",
   "block.test.red_iron_ore": "Red Iron Ore",
+  "block.test.speedy_block": "Speedy Block",
 
   "item.test.dowsing_rod.no_valuable" : "No Valuables Founds!"
 }

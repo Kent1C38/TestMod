@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "test:red_iron_ore",
-    "test:red_iron_block"
+    "test:red_iron_block",
+    "test:speedy_block"
   ]
 }
