@@ -4,10 +4,19 @@
   "item.test.raw_red_iron": "Raw Red Iron",
   "item.test.red_iron_ingot": "Red Iron Ingot",
   "item.test.dowsing_rod" : "Dowsing Rod",
+  "item.test.crisps" : "Crisps",
+  "item.test.sapphire_gem": "Sapphire",
+  "item.test.super_coal": "Super Coal",
 
   "block.test.red_iron_block": "Red Iron Block",
   "block.test.red_iron_ore": "Red Iron Ore",
+  "block.test.sapphire_ore": "Sapphire Ore",
+  "block.test.sapphire_block": "Sapphire Block",
   "block.test.speedy_block": "Speedy Block",
+
+  "tooltip.test.dowsing_rod.tooltip.shift" : "Right Click to find Ores!",
+  "tooltip.test.dowsing_rod.tooltip": "Press §eSHIFT§r for more Information!",
+  "tooltip.test.block.speedy_block": "Walk on it to go faster!",
 
   "item.test.dowsing_rod.no_valuable" : "No Valuables Founds!"
 }

@@ -1,16 +1,26 @@
 package fr.kent1c38.test.item.custom;
 
 import fr.kent1c38.test.block.ModBlocks;
+import fr.kent1c38.test.util.ModTags;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class DowsingRodItem extends Item
 {
@@ -28,11 +38,11 @@ public class DowsingRodItem extends Item
 
             for (int i = 0; i <= positionClicked.getY() + 64; i++)
             {
-                Block blockBelow = pContext.getLevel().getBlockState(positionClicked.below(i)).getBlock();
+                BlockState blockBelow = pContext.getLevel().getBlockState(positionClicked.below(i));
 
                 if (isValuableBlock(blockBelow))
                 {
-                    outputValuableCoordinates(positionClicked.below(i), player, blockBelow);
+                    outputValuableCoordinates(positionClicked.below(i), player, blockBelow.getBlock());
                     foundBlock = true;
                     break;
                 }
@@ -48,6 +58,18 @@ public class DowsingRodItem extends Item
         return super.useOn(pContext);
     }
 
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if (Screen.hasShiftDown())
+        {
+            pTooltipComponents.add(new TranslatableComponent("tooltip.test.dowsing_rod.tooltip.shift"));
+        }
+        else
+        {
+            pTooltipComponents.add(new TranslatableComponent("tooltip.test.dowsing_rod.tooltip"));
+        }
+    }
+
     public void outputValuableCoordinates(BlockPos blockPos, Player player, Block blockBelow)
     {
         player.sendMessage(new TextComponent("Found " + blockBelow.asItem().getRegistryName().toString() + " at " +
@@ -55,13 +77,9 @@ public class DowsingRodItem extends Item
         player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5f, 1f);
     }
 
-    private boolean isValuableBlock(Block block)
+    private boolean isValuableBlock(BlockState state)
     {
-        return block == Blocks.DIAMOND_ORE || block == ModBlocks.RED_IRON_ORE.get() || block == Blocks.COAL_ORE || block == Blocks.DEEPSLATE_COAL_ORE
-                || block == Blocks.COPPER_ORE || block == Blocks.DEEPSLATE_COPPER_ORE || block == Blocks.DEEPSLATE_DIAMOND_ORE
-                || block == Blocks.DEEPSLATE_EMERALD_ORE || block == Blocks.DEEPSLATE_GOLD_ORE || block == Blocks.DEEPSLATE_IRON_ORE
-                || block == Blocks.DEEPSLATE_LAPIS_ORE || block == Blocks.DEEPSLATE_REDSTONE_ORE || block == Blocks.EMERALD_ORE || block == Blocks.GOLD_ORE
-                || block == Blocks.IRON_ORE || block == Blocks.LAPIS_ORE || block == Blocks.NETHER_GOLD_ORE || block == Blocks.NETHER_QUARTZ_ORE
-                || block == Blocks.REDSTONE_ORE;
+        return state.is(ModTags.Blocks.DOWSING_ROD_VALUABLES);
     }
+
 }
